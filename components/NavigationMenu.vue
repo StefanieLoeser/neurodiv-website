@@ -2,17 +2,28 @@
   <div class="h-screen">
     <nav class="navigation">
       <ul class="menu">
-        <li :class="{ 'menu-item': true }">
-          <NuxtLink to="/">Startseite</NuxtLink>
+        <li :class="{ 'menu-item': true, active: isActive('/') }">
+          <NuxtLink to="/" exact>
+            {{ isActive("/") ? "> " : "" }}Startseite
+          </NuxtLink>
+          <!-- <NuxtLink to="/neurodiversity">
+      Neurodiversität{{ isActive('/neurodiversity') ? '>' : '' }}
+    </NuxtLink> -->
         </li>
-        <li :class="{ 'menu-item': true }">
-          <NuxtLink to="/about">Über uns</NuxtLink>
+        <li :class="{ 'menu-item': true, active: isActive('/about') }">
+          <NuxtLink to="/about"
+            >{{ isActive("/about") ? "> " : "" }}Über uns</NuxtLink
+          >
         </li>
-        <li :class="{ 'menu-item': true }">
-          <NuxtLink to="/contact">Kontaxt</NuxtLink>
+        <li :class="{ 'menu-item': true, active: isActive('/contact') }">
+          <NuxtLink to="/contact"
+            >{{ isActive("/contact") ? "> " : "" }}Kontakt</NuxtLink
+          >
         </li>
-        <li :class="{ 'menu-item': true }">
-          <NuxtLink to="/blog">Blog</NuxtLink>
+        <li :class="{ 'menu-item': true, active: isActive('/blog') }">
+          <NuxtLink to="/blog"
+            >{{ isActive("/blog") ? "> " : "" }}Blog</NuxtLink
+          >
         </li>
         <!-- <li :class="{ 'menu-item': true, active: isActive('/neurodiversity') }">
           <a href="/neurodiversity">Neurodiversität</a>
@@ -31,9 +42,9 @@
 <script>
 export default {
   methods: {
-    // isActive(route) {
-    //   return this.$route.path === route;
-    // },
+    isActive(route) {
+      return this.$route.path === route;
+    },
   },
 };
 </script>
@@ -42,10 +53,8 @@ export default {
   font-family: "Inter", sans-serif;
   font-weight: medium;
   text-align: left;
-  padding: 5px;
-  width: 180px;
+  width: 230px;
   position: absolute;
-  top: 50px;
   right: 0;
 }
 
@@ -71,10 +80,18 @@ export default {
   text-decoration: none;
   color: #000;
   font-weight: normal;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .menu-item.active a {
-  color: #ff0000; /* Adjust the color for active links */
+  position: relative;
+  left: -20px;
+  width: 200px;
+  height: 40px;
+  padding: 10px 30px;
+  background: #4af2eb;
+  border: 1px solid #000000;
+  box-shadow: 1px 2px 1px #000000;
+  border-radius: 1px 8px 8px 8px;
 }
 </style>

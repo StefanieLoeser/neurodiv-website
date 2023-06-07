@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="grid grid-cols-3 p-10">
     <LeftColumn />
     <slot />
     <NavigationMenu />

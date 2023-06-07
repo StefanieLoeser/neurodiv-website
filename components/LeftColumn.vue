@@ -1,6 +1,6 @@
 <template>
   <div class="h-screen">
-    <div class="logo p-10">
+    <div class="logo">
       <h1 class="color">Unsere Zukunft<br />ist neurodivers.</h1>
       <h1>Neurodiverse<br />Gemeinschaft</h1>
     </div>
