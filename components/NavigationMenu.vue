@@ -4,25 +4,49 @@
       <ul class="menu">
         <li :class="{ 'menu-item': true, active: isActive('/') }">
           <NuxtLink to="/" exact>
-            {{ isActive("/") ? "> " : "" }}Startseite
+            <template v-if="isActive('/')">
+              <img
+                class="arrow"
+                src="../public/assets/icons8-down-left-arrow-48.png"
+                alt="Arrow"
+              /> </template
+            >Startseite
           </NuxtLink>
-          <!-- <NuxtLink to="/neurodiversity">
-      Neurodiversität{{ isActive('/neurodiversity') ? '>' : '' }}
-    </NuxtLink> -->
         </li>
         <li :class="{ 'menu-item': true, active: isActive('/about') }">
-          <NuxtLink to="/about"
-            >{{ isActive("/about") ? "> " : "" }}Über uns</NuxtLink
+          <NuxtLink to="/about">
+            <template v-if="isActive('/about')">
+              <img
+                class="arrow"
+                src="../public/assets/icons8-down-left-arrow-48.png"
+                alt="Arrow"
+              /> </template
+            >Über uns</NuxtLink
           >
         </li>
         <li :class="{ 'menu-item': true, active: isActive('/contact') }">
-          <NuxtLink to="/contact"
-            >{{ isActive("/contact") ? "> " : "" }}Kontakt</NuxtLink
+          <NuxtLink to="/contact">
+            <!--
+            >{{ isActive("/contact") ? "> " : "" }}
+            -->
+            <template v-if="isActive('/contact')">
+              <img
+                class="arrow"
+                src="../public/assets/icons8-down-left-arrow-48.png"
+                alt="Arrow"
+              /> </template
+            >Kontakt</NuxtLink
           >
         </li>
         <li :class="{ 'menu-item': true, active: isActive('/blog') }">
           <NuxtLink to="/blog"
-            >{{ isActive("/blog") ? "> " : "" }}Blog</NuxtLink
+            ><template v-if="isActive('/blog')">
+              <img
+                class="arrow"
+                src="../public/assets/icons8-down-left-arrow-48.png"
+                alt="Arrow"
+              /> </template
+            >Blog</NuxtLink
           >
         </li>
         <!-- <li :class="{ 'menu-item': true, active: isActive('/neurodiversity') }">
@@ -53,7 +77,7 @@ export default {
   font-family: "Inter", sans-serif;
   font-weight: medium;
   text-align: left;
-  width: 230px;
+  width: 200px;
   position: absolute;
   right: 0;
 }
@@ -86,12 +110,22 @@ export default {
 .menu-item.active a {
   position: relative;
   left: -20px;
-  width: 200px;
+  /* width: 200px; */
   height: 40px;
-  padding: 10px 30px;
+  padding: 8px 30px 10px 20px;
   background: #4af2eb;
   border: 1px solid #000000;
   box-shadow: 1px 2px 1px #000000;
   border-radius: 1px 8px 8px 8px;
+}
+
+.arrow {
+  display: inline-block;
+  width: 20px;
+  height: auto;
+  rotate: 180deg;
+  margin-right: 10px;
+  position: relative;
+  top: -1px;
 }
 </style>

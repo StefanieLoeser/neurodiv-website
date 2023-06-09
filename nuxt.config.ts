@@ -2,4 +2,8 @@
 export default defineNuxtConfig({
   modules: ["@nuxt/devtools", "@nuxtjs/tailwindcss"],
   devtools: { enabled: true },
+  // router: {
+  //   linkActiveClass: "active",
+  //   linkExactActiveClass: "exact-active",
+  // }
 });
