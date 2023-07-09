@@ -1,5 +1,6 @@
 <template>
-  <div class="h-screen fixed right-5 top-10 flex-col bg-gray-400 font-sans">
+  <div class="md:h-screen md:fixed md:right-5 md:top-10 flex-col font-sans">
+    <BurgerMenu />
     <nav class="font-medium text-left w-48 absolute right-0">
       <ul
         class="list-none flex flex-col justify-center items-left p-0 m-0 space-y-4"
@@ -43,12 +44,27 @@
         -->
       </ul>
     </nav>
-    <ImprintInfo />
+    <ImprintInfo v-show="!isMobile" />
   </div>
 </template>
 
 <script>
+import { useWindowSize } from "@vueuse/core";
 export default {
+  setup() {
+    const { width, height } = useWindowSize();
+
+    const isMobile = () => {
+      width >= 640 ? true : false;
+      console.log(isMobile);
+    };
+
+    return {
+      isMobile,
+      width,
+      height,
+    };
+  },
   methods: {
     isActive(route) {
       return this.$route.path === route;

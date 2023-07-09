@@ -1,10 +1,10 @@
 <template>
-  <div class="flex gap-2 fixed bottom-5">
+  <div class="flex gap-5 fixed bottom-3 md:bottom-5">
     <a href="https://www.instagram.com/neurodiversegemeinschaft/">
       <img
         src="../assets/icons/icons8-instagram.svg"
         alt="link to instagram profile"
-        class="w-20 h-20"
+        class="w-12 h-12 md:w-20 md:h-20"
       />
     </a>
 
@@ -12,7 +12,7 @@
       <img
         src="../assets/icons/icons8-telegramm.svg"
         alt="link to telegram group"
-        class="w-20 h-20"
+        class="w-12 h-12 md:w-20 md:h-20"
     /></a>
   </div>
 </template>
