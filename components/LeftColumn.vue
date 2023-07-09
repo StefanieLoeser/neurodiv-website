@@ -1,9 +1,10 @@
 <template>
-  <div class="h-screen">
+  <div class="max-w-80 h-screen fixed inline-block flex-row">
     <div class="logo">
       <h1 class="color">Unsere Zukunft<br />ist neurodivers.</h1>
       <h1>Neurodiverse<br />Gemeinschaft</h1>
     </div>
+    <SocialMedia />
   </div>
 </template>
 
