@@ -4,29 +4,21 @@
       <div class="relative sm:max-w-xl mx-auto">
         <nav>
           <button
-            class="text-gray-500 w-16 h-16 relative focus:outline-none bg-white"
+            class="bg-white w-16 h-16 relative focus:outline-none"
             @click="toggleBurger"
           >
+            <!-- <transition name="fade"> -->
+            <img
+              :src="
+                !open
+                  ? '../assets/icons/icons8-menue-abgerundet-100.png'
+                  : '../assets/icons/icons8-loeschen-100.png'
+              "
+              alt="menu icon"
+              class="w-12 h-12 md:w-20 md:h-20"
+            />
+            <!-- </transition> -->
             <span class="sr-only">Open main menu</span>
-            <div
-              class="flex-col gap-3 block w-8 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
-            >
-              <span
-                aria-hidden="true"
-                class="block absolute h-0.5 w-8 bg-current transform transition duration-500 ease-in-out"
-                :class="{ 'rotate-45': open, ' -translate-y-1.5': !open }"
-              ></span>
-              <span
-                aria-hidden="true"
-                class="block absolute h-0.5 w-8 bg-current transform transition duration-500 ease-in-out"
-                :class="{ 'opacity-0': open }"
-              ></span>
-              <span
-                aria-hidden="true"
-                class="block absolute h-0.5 w-8 bg-current transform transition duration-500 ease-in-out"
-                :class="{ '-rotate-45': open, ' translate-y-1.5': !open }"
-              ></span>
-            </div>
           </button>
         </nav>
       </div>
@@ -43,6 +35,7 @@ export default {
 
     const toggleBurger = () => {
       open.value = !open.value;
+      console.log(open.value);
     };
 
     return {
@@ -53,4 +46,14 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>

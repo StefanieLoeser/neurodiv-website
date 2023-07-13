@@ -1,39 +1,44 @@
 <template>
-  <div class="md:h-screen md:fixed md:right-5 md:top-10 flex-col font-sans">
-    <BurgerMenu />
-    <nav class="font-medium text-left w-48 absolute right-0">
-      <ul
-        class="list-none flex flex-col justify-center items-left p-0 m-0 space-y-4"
-      >
-        <li :class="{ 'menu-item': true, active: isActive('/') }">
-          <NuxtLink to="/" exact class="flex items-center">
-            <template v-if="isActive('/')"><Arrow class="mr-2" /></template
-            ><span class="text-base">Startseite</span>
-          </NuxtLink>
-        </li>
-        <li :class="{ 'menu-item': true, active: isActive('/about') }">
-          <NuxtLink to="/about" class="flex items-center">
-            <template v-if="isActive('/about')">
-              <Arrow class="mr-2"
-            /></template>
-            <span class="text-base">Über uns</span>
-          </NuxtLink>
-        </li>
-        <li :class="{ 'menu-item': true, active: isActive('/contact') }">
-          <NuxtLink to="/contact" class="flex items-center">
-            <template v-if="isActive('/contact')">
-              <Arrow class="mr-2" /></template
-            ><span class="text-base">Kontakt</span></NuxtLink
-          >
-        </li>
-        <li :class="{ 'menu-item': true, active: isActive('/blog') }">
-          <NuxtLink to="/blog" class="flex items-center"
-            ><template v-if="isActive('/blog')">
-              <Arrow class="mr-2" /></template
-            ><span class="text-base">Blog</span></NuxtLink
-          >
-        </li>
-        <!-- <li :class="{ 'menu-item': true, active: isActive('/neurodiversity') }">
+  <div>
+    <div
+      v-if="!isMobile"
+      class="md:h-screen md:fixed md:right-5 md:top-10 flex-col font-sans"
+    >
+      <!-- Desktop Menu : -->
+
+      <nav class="font-medium text-left w-48 absolute right-0">
+        <ul
+          class="list-none flex flex-col justify-center items-left p-0 m-0 space-y-4"
+        >
+          <li :class="{ 'menu-item': true, active: isActive('/') }">
+            <NuxtLink to="/" exact class="flex items-center">
+              <template v-if="isActive('/')"><Arrow class="mr-2" /></template
+              ><span class="text-base">Startseite</span>
+            </NuxtLink>
+          </li>
+          <li :class="{ 'menu-item': true, active: isActive('/about') }">
+            <NuxtLink to="/about" class="flex items-center">
+              <template v-if="isActive('/about')">
+                <Arrow class="mr-2"
+              /></template>
+              <span class="text-base">Über uns</span>
+            </NuxtLink>
+          </li>
+          <li :class="{ 'menu-item': true, active: isActive('/contact') }">
+            <NuxtLink to="/contact" class="flex items-center">
+              <template v-if="isActive('/contact')">
+                <Arrow class="mr-2" /></template
+              ><span class="text-base">Kontakt</span></NuxtLink
+            >
+          </li>
+          <li :class="{ 'menu-item': true, active: isActive('/blog') }">
+            <NuxtLink to="/blog" class="flex items-center"
+              ><template v-if="isActive('/blog')">
+                <Arrow class="mr-2" /></template
+              ><span class="text-base">Blog</span></NuxtLink
+            >
+          </li>
+          <!-- <li :class="{ 'menu-item': true, active: isActive('/neurodiversity') }">
           <a href="/neurodiversity">Neurodiversität</a>
         </li>
         <li :class="{ 'menu-item': true, active: isActive('/info') }">
@@ -41,28 +46,33 @@
         </li>
         <li :class="{ 'menu-item': true, active: isActive('/membership') }">
           <a href="/membership">Mitgliedschaft</a>
-        -->
-      </ul>
-    </nav>
-    <ImprintInfo v-show="!isMobile" />
+        --></ul>
+      </nav>
+      <ImprintInfo :isMobile="isMobile" />
+    </div>
+
+    <!-- Mobile Menu : -->
+    <BurgerMenu :isMobile="isMobile" />
+    <MobileMenuOverlay :isMobile="isMobile" />
   </div>
 </template>
 
 <script>
+import { ref, watchEffect } from "vue";
 import { useWindowSize } from "@vueuse/core";
+
 export default {
   setup() {
-    const { width, height } = useWindowSize();
+    const { width } = useWindowSize();
+    const isMobile = ref(false);
 
-    const isMobile = () => {
-      width >= 640 ? true : false;
-      console.log(isMobile);
-    };
+    watchEffect(() => {
+      isMobile.value = width.value < 380;
+    });
 
     return {
       isMobile,
       width,
-      height,
     };
   },
   methods: {

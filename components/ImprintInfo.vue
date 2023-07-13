@@ -1,5 +1,5 @@
 <template>
-  <div class="imprint fixed bottom-5 right-5">
+  <div v-if="!isMobile" class="imprint fixed bottom-5 right-5">
     <ul class="flex-col">
       <li>
         <NuxtLink to="/datenschutz"> Datenschutzhinweise </NuxtLink>
@@ -11,9 +11,7 @@
   </div>
 </template>
 
-<script>
-export default {};
-</script>
+<script setup></script>
 
 <style>
 .imprint {
