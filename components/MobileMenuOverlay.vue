@@ -19,21 +19,23 @@
         <DialogPanel
           class="fixed inset-0 flex items-end justify-center px-4 pb-6 sm:p-0"
         >
-          <div class="bg-white rounded-t-2xl shadow-xl w-full max-w-md">
+          <div
+            class="bg-[#4AF2EB] rounded-t-2xl shadow-xl w-full max-w-md border border-black border-2"
+          >
             <div class="px-4 py-6">
               <div class="flex items-start justify-between">
                 <DialogTitle
-                  class="text-base font-semibold leading-6 text-gray-900"
+                  class="text-base font-medium leading-6 text-gray-900"
                   >Panel title</DialogTitle
                 >
                 <div class="ml-3 flex h-7 items-center">
                   <button
                     type="button"
-                    class="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    class="rounded-md bg-transparent text-black hover:text-gray-500"
                     @click="open = false"
                   >
                     <span class="sr-only">Close panel</span>
-                    <XMarkIcon class="h-6 w-6" aria-hidden="true" />
+                    <XMarkIcon class="h-10 w-10" aria-hidden="true" />
                   </button>
                 </div>
               </div>
