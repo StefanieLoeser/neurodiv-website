@@ -1,6 +1,6 @@
 <template>
   <div
-    class="imprint w-9/12 text-sm @responsive p-2 md:fixed md:bottom-5 md:right-5 md:w-[220px] md:text-md"
+    class="imprint md:block w-9/12 text-sm @responsive p-2 md:fixed md:bottom-5 md:right-5 md:w-[220px] md:text-md"
   >
     <ul class="flex-col p-3">
       <li class="pb-2">

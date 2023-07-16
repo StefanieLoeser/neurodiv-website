@@ -1,6 +1,8 @@
 <template>
   <div>
-    <div class="md:h-screen md:fixed md:right-5 md:top-10 flex-col font-sans">
+    <div
+      class="md:h-screen md:fixed md:block hidden md:right-5 md:top-10 flex-col font-sans"
+    >
       <!-- Desktop Menu : -->
 
       <nav class="font-medium text-left w-48 absolute right-0">
