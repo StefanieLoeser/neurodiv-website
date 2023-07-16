@@ -22,5 +22,3 @@ const { width, height } = defineProps(["width", "height"]);
 </script>
 
 <style></style>
-
-<!-- "-rotate-45" -->

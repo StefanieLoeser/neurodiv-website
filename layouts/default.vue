@@ -1,7 +1,6 @@
 <template>
   <div class="grid-cols-1 md:grid-cols-3 gap-[5rem]">
-    <div class="h-screen md:left-column p-10">
-      <!-- Add px-10 class for padding -->
+    <div class="hidden md:block h-screen md:left-column p-10">
       <!-- Left Column -->
       <LeftColumn />
     </div>
@@ -10,25 +9,12 @@
       <slot />
     </div>
     <div class="p-10">
-      <!-- Add px-10 class for padding -->
       <!-- Navigation Menu -->
       <NavigationMenu />
     </div>
   </div>
 </template>
 
-<script>
-import { useWindowSize } from "@vueuse/core";
-
-export default {
-  setup() {
-    const { width, height } = useWindowSize();
-    return {
-      width,
-      height,
-    };
-  },
-};
-</script>
+<script setup></script>
 
 <style></style>
