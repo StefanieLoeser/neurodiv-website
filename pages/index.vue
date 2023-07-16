@@ -1,7 +1,7 @@
 <template>
   <div>
     <Logo :class="'m-auto'" />
-    <h2>Startseite</h2>
+    <h2 class="hidden md:block font-bold text-lg mb-5">Startseite</h2>
     <p>
       Die Neurodiverse Gemeinschaft e.V. ist ein gemeinnütziger Verein, der sich
       für die Selbstermächtigung und Selbsthilfe von neurodiversen Menschen
