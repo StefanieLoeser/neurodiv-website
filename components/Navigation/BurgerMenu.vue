@@ -23,8 +23,7 @@
 
         <div
           v-if="open"
-          id="mobile-menu"
-          class="bg-[#4AF2EB] z-20 fixed bottom-20 w-[300px] m-auto border-t-2 border-r-8 border-b-8 border-l-2 border-black rounded-3xl rounded-tl-sm"
+          class="bg-[#4AF2EB] z-20 fixed bottom-20 w-[300px] m-auto border-t-2 border-r-8 border-b-8 border-l-2 border-black rounded-3xl rounded-tl-sm shadow-md"
         >
           <div class="px-5 py-6">
             <!-- close button  -->
