@@ -11,6 +11,7 @@
   "devDependencies": {
     "@iconify/vue": "^4.1.1",
     "@nuxt/devtools": "latest",
+    "@nuxtjs/tailwindcss": "^6.8.0",
     "@types/node": "^18",
     "@vueuse/core": "^10.2.1",
     "@vueuse/nuxt": "^10.2.1",
@@ -19,7 +20,6 @@
   },
   "dependencies": {
     "@headlessui/vue": "^1.7.14",
-    "@heroicons/vue": "^2.0.18",
-    "@nuxtjs/tailwindcss": "^6.7.0"
+    "@heroicons/vue": "^2.0.18"
   }
 }

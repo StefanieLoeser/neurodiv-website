@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .cnt-lg-turquoise {
+    @apply bg-[#4AF2EB] rounded-t-2xl shadow-xl w-full max-w-md border-black border-2;
+  }
+  .cnt-sm-turquoise {
+    @apply rounded-t-2xl shadow-xl border-black border-2;
+  }
+}
