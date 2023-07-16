@@ -9,11 +9,7 @@
           >
             <!-- <transition name="fade"> -->
             <img
-              :src="
-                !open
-                  ? '../assets/icons/icons8-menue-abgerundet-100.png'
-                  : '../assets/icons/icons8-loeschen-100.png'
-              "
+              :src="!open ? menuIcon : closeIcon"
               alt="menu icon"
               class="w-12 h-12 md:w-20 md:h-20"
             />
@@ -42,7 +38,7 @@
           >
             <span class="sr-only">Close panel</span>
             <img
-              :src="'../assets/icons/icons8-loeschen-100.png'"
+              :src="closeIcon"
               alt="close mobile menu"
               class="w-12 h-12 md:w-20 md:h-20"
             />
@@ -102,6 +98,8 @@
 <script setup>
 import ImprintInfo from "./ImprintInfo.vue";
 import { ref } from "vue";
+import menuIcon from "@/assets/icons/icons8-menue-abgerundet-100.png";
+import closeIcon from "@/assets/icons/icons8-loeschen-100.png";
 
 const open = ref(false);
 
