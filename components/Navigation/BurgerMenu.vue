@@ -52,9 +52,7 @@
         <!-- menu items -->
 
         <div class="px-4 pb-10">
-          <ul
-            class="list-none flex flex-col justify-center pl-2 m-0 space-y-4 text-xl"
-          >
+          <ul class="list-none flex flex-col justify-center pl-2 m-0 space-y-4">
             <li :class="{ 'menu-item': true, active: isActive('/') }">
               <NuxtLink to="/" exact class="flex items-center">
                 <template v-if="isActive('/')"
@@ -102,7 +100,6 @@
 </template>
 
 <script setup>
-import MobileMenuOverlay from "./MobileMenuOverlay.vue";
 import ImprintInfo from "./ImprintInfo.vue";
 import { ref } from "vue";
 
