@@ -1,7 +1,9 @@
 <template>
-  <div v-if="!isMobile" class="imprint fixed bottom-5 right-5">
-    <ul class="flex-col">
-      <li>
+  <div
+    class="imprint w-9/12 text-sm @responsive p-2 md:fixed md:bottom-5 md:right-5 md:w-[220px] md:text-md"
+  >
+    <ul class="flex-col p-3">
+      <li class="pb-2">
         <NuxtLink to="/datenschutz"> Datenschutzhinweise </NuxtLink>
       </li>
       <li>
@@ -15,7 +17,7 @@
 
 <style>
 .imprint {
-  padding: 8px 30px 10px 20px;
+  /* padding: 8px 30px 10px 20px; */
   border: 1px solid #000000;
   box-shadow: 2px 3px 1px #000000;
   border-radius: 1px 8px 8px 8px;

@@ -1,9 +1,6 @@
 <template>
   <div>
-    <div
-      v-if="!isMobile"
-      class="md:h-screen md:fixed md:right-5 md:top-10 flex-col font-sans"
-    >
+    <div class="md:h-screen md:fixed md:right-5 md:top-10 flex-col font-sans">
       <!-- Desktop Menu : -->
 
       <nav class="font-medium text-left w-48 absolute right-0">
@@ -48,38 +45,37 @@
           <a href="/membership">Mitgliedschaft</a>
         --></ul>
       </nav>
-      <ImprintInfo :isMobile="isMobile" />
+      <ImprintInfo />
     </div>
-
     <!-- Mobile Menu : -->
-    <BurgerMenu :isMobile="isMobile" />
-    <MobileMenuOverlay :isMobile="isMobile" />
+    <div class="sm:hidden">
+      <BurgerMenu />
+    </div>
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref, watchEffect } from "vue";
-import { useWindowSize } from "@vueuse/core";
 
-export default {
-  setup() {
-    const { width } = useWindowSize();
-    const isMobile = ref(false);
+import { useMediaQuery } from "@vueuse/core";
+import ImprintInfo from "./ImprintInfo.vue";
+import BurgerMenu from "./BurgerMenu.vue";
 
-    watchEffect(() => {
-      isMobile.value = width.value < 380;
-    });
+const isDesktop = ref(false);
 
-    return {
-      isMobile,
-      width,
-    };
-  },
-  methods: {
-    isActive(route) {
-      return this.$route.path === route;
-    },
-  },
+watchEffect(() => {
+  isDesktop.value = useMediaQuery("(max-width: 640px)");
+  console.log("isDesktop", !isDesktop.value);
+});
+
+const isActive = (path) => {
+  const route = useRoute();
+  return route.path === path;
+
+  defineNuxtComponent({
+    isDesktop,
+    hydrate: true,
+  });
 };
 </script>
 <style scoped>
