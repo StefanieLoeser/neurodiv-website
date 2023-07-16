@@ -9,14 +9,15 @@
         >
           <li :class="{ 'menu-item': true, active: isActive('/') }">
             <NuxtLink to="/" exact class="flex items-center">
-              <template v-if="isActive('/')"><Arrow class="mr-2" /></template
+              <template v-if="isActive('/')"
+                ><Arrow :width="24" :height="24" class="mr-2" /></template
               ><span class="text-base">Startseite</span>
             </NuxtLink>
           </li>
           <li :class="{ 'menu-item': true, active: isActive('/about') }">
             <NuxtLink to="/about" class="flex items-center">
               <template v-if="isActive('/about')">
-                <Arrow class="mr-2"
+                <Arrow :width="24" :height="24" class="mr-2"
               /></template>
               <span class="text-base">Über uns</span>
             </NuxtLink>
@@ -24,14 +25,14 @@
           <li :class="{ 'menu-item': true, active: isActive('/contact') }">
             <NuxtLink to="/contact" class="flex items-center">
               <template v-if="isActive('/contact')">
-                <Arrow class="mr-2" /></template
+                <Arrow :width="24" :height="24" class="mr-2" /></template
               ><span class="text-base">Kontakt</span></NuxtLink
             >
           </li>
           <li :class="{ 'menu-item': true, active: isActive('/blog') }">
             <NuxtLink to="/blog" class="flex items-center"
               ><template v-if="isActive('/blog')">
-                <Arrow class="mr-2" /></template
+                <Arrow :width="24" :height="24" class="mr-2" /></template
               ><span class="text-base">Blog</span></NuxtLink
             >
           </li>
