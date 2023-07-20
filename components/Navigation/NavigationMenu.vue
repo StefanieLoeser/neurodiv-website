@@ -38,48 +38,36 @@
               ><span class="text-base">Blog</span></NuxtLink
             >
           </li>
-          <!-- <li :class="{ 'menu-item': true, active: isActive('/neurodiversity') }">
-          <a href="/neurodiversity">Neurodiversität</a>
-        </li>
-        <li :class="{ 'menu-item': true, active: isActive('/info') }">
-          <a href="/info">Infos und Anlaufstellen</a>
-        </li>
-        <li :class="{ 'menu-item': true, active: isActive('/membership') }">
-          <a href="/membership">Mitgliedschaft</a>
-        --></ul>
+        </ul>
       </nav>
       <ImprintInfo />
     </div>
+
     <!-- Mobile Menu : -->
     <div class="sm:hidden">
-      <BurgerMenu />
+      <MobileNavBar />
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, watchEffect } from "vue";
+import { ref } from "vue";
 
-import { useMediaQuery } from "@vueuse/core";
 import ImprintInfo from "./ImprintInfo.vue";
-import BurgerMenu from "./BurgerMenu.vue";
+
+import MobileNavBar from "./MobileNavBar.vue";
 
 const isDesktop = ref(false);
-
-watchEffect(() => {
-  isDesktop.value = useMediaQuery("(max-width: 640px)");
-  console.log("isDesktop", !isDesktop.value);
-});
 
 const isActive = (path) => {
   const route = useRoute();
   return route.path === path;
-
-  defineNuxtComponent({
-    isDesktop,
-    hydrate: true,
-  });
 };
+
+defineNuxtComponent({
+  isDesktop,
+  hydrate: true,
+});
 </script>
 <style scoped>
 .menu-item:last-child {
