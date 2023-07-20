@@ -18,7 +18,6 @@
 
 <script setup>
 import Logo from "@/components/Logo.vue";
-import SocialMedia from "@/components/Navigation/SocialMedia.vue";
 </script>
 
 <style></style>

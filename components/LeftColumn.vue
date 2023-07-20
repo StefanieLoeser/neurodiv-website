@@ -7,7 +7,6 @@
 
 <script setup>
 import Logo from "./Logo.vue";
-import SocialMedia from "@/components/Navigation/SocialMedia.vue";
 </script>
 
 <style scoped></style>

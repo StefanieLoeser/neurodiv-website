@@ -14,7 +14,6 @@
 
 <script setup>
 import { ref } from "vue";
-import SocialMedia from "@/components/Navigation/SocialMedia.vue";
 import MobileMenuOverlay from "@/components/Navigation/MobileMenuOverlay.vue";
 import BurgerMenu from "@/components/Navigation/BurgerMenu.vue";
 
