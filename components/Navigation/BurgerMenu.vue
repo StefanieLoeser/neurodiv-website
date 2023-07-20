@@ -1,9 +1,6 @@
 <template>
-  <div class="fixed right-0 bottom-0 sm:max-w-xl mx-auto">
-    <button
-      class="bg-white w-16 h-16 relative focus:outline-none"
-      @click="$emit('onClick')"
-    >
+  <div class="sm:max-w-xl my-auto">
+    <button class="w-16 h-16 focus:outline-none" @click="$emit('onClick')">
       <img
         :src="!openBurger ? menuIcon : closeIcon"
         alt="menu icon"
