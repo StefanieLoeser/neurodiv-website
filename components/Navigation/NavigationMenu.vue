@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="md:h-screen md:fixed md:block hidden md:right-5 md:top-10 flex-col font-sans"
+      class="hidden md:block md:h-screen md:fixed md:right-5 md:top-10 flex-col font-sans"
     >
       <!-- Desktop Menu : -->
 
@@ -44,7 +44,7 @@
     </div>
 
     <!-- Mobile Menu : -->
-    <div class="sm:hidden">
+    <div class="md:hidden">
       <MobileNavBar />
     </div>
   </div>

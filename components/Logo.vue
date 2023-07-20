@@ -1,9 +1,11 @@
 <template>
   <div
-    class="logo mb-10 font-bold font-sans text-left md:block md:h-screen self-center"
+    class="flex items-center justify-center relative bottom-10 md:items-left md:justify-start"
   >
-    <h1 class="color">Unsere Zukunft<br />ist neurodivers.</h1>
-    <h1>Neurodiverse<br />Gemeinschaft</h1>
+    <div class="logo font-bold font-sans text-left md:h-screen md:pt-10">
+      <h1 class="color">Unsere Zukunft<br />ist neurodivers.</h1>
+      <h1>Neurodiverse<br />Gemeinschaft</h1>
+    </div>
   </div>
 </template>
 
