@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="flex drop-shadow-[-50px_0_35px_rgba(255,255,255)] backdrop-blur-sm place-content-around fixed left-0 bottom-0 bg-white z-10 w-screen"
+    class="flex drop-shadow-[-50px_0_35px_rgba(255,255,255)] backdrop-blur-sm place-content-between fixed left-0 bottom-0 bg-white z-10 w-screen"
   >
     <SocialMedia />
     <BurgerMenu
