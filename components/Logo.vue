@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex items-center justify-center relative bottom-10 md:items-left md:justify-start"
+    class="flex items-center h-screen justify-center relative bottom-10 md:items-left md:justify-start"
   >
     <div class="logo font-bold font-sans text-left md:h-screen md:pt-10">
       <h1 class="color">Unsere Zukunft<br />ist neurodivers.</h1>
