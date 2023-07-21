@@ -1,13 +1,13 @@
 <template>
-  <div class="flex-col gap-10 snap-mandatory snap-y">
+  <div class="snap-mandatory snap-y">
     <Logo
       :class="'m-auto sm:hidden h-screen items-center justify-center relative bottom-20'"
     />
+    <h2 class="hidden md:block font-bold text-lg mb-5">Startseite</h2>
     <div
-      class="snap-start flex pb-10 flex-col items-center justify-center sm:items-start sm:align gap-10 z-1"
+      class="snap-start flex flex-col gap-10 pb-10 items-center justify-center"
     >
-      <h2 class="hidden md:block font-bold text-lg mb-5">Startseite</h2>
-      <p class="font-serif m-5">
+      <p class="font-serif m-5 md:mx-0 md:my-5 break-words">
         Die Neurodiverse Gemeinschaft e.V. ist ein gemeinnütziger Verein, der
         sich für die Selbstermächtigung und Selbsthilfe von neurodiversen
         Menschen einsetzt. Wir wollen neurodiversen Menschen Raum geben, um
@@ -20,7 +20,7 @@
       <!-- Agenda Columns  -->
 
       <div
-        class="flex flex-col gap-20 items-center justify-center py-10 w-2/3 sm:max-w-1/2 bg-transparent border border-black border-solid rounded-tl-md rounded-tr-md rounded-br-md rounded-bl-md"
+        class="flex flex-col gap-10 items-center justify-center py-10 w-2/3 sm:max-w-1/2 border border-black border-solid rounded-tl-sm rounded-tr-md rounded-br-md rounded-bl-md"
       >
         <div class="flex flex-col gap-3 items-center justify-center">
           <h3
