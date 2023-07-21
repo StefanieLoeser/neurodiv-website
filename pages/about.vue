@@ -3,7 +3,7 @@
     <h2 class="text-head">Über uns</h2>
 
     <div class="flex flex-col gap-10">
-      <p class="text-serif">
+      <p class="text-serif" lang="de">
         Anfang 2022 haben wir – das sind Giancarlo (31), Katharina (30) und
         Johanna (29) – die Neurodiverse Gemeinschaft e. V. in Berlin gegründet.
         Unser Verein richtet sich an neurodivergente Menschen und wir setzen uns

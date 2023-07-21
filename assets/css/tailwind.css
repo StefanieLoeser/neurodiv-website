@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  p {
+    @apply hyphens-auto;
+  }
+}
+
 @layer components {
   .text-serif {
     @apply font-serif;
@@ -21,5 +27,8 @@
 
   .frame {
     @apply border-t-2 border-r-4 border-b-4 border-l-2 rounded-3xl rounded-tl-sm shadow-md;
+  }
+  .frame-s {
+    @apply rounded-tl-sm rounded-tr-lg rounded-bl-lg rounded-br-lg shadow drop-shadow-[1px_2px_0px_rgba(0,0,0)] border;
   }
 }

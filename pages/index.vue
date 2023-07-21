@@ -7,7 +7,7 @@
     <div
       class="snap-start flex flex-col gap-10 pb-10 items-center justify-center"
     >
-      <p class="font-serif m-5 md:mx-0 md:my-5 break-words">
+      <p class="font-serif m-5 md:mx-0 md:my-5" lang="de">
         Die Neurodiverse Gemeinschaft e.V. ist ein gemeinnütziger Verein, der
         sich für die Selbstermächtigung und Selbsthilfe von neurodiversen
         Menschen einsetzt. Wir wollen neurodiversen Menschen Raum geben, um
