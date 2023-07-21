@@ -1,11 +1,13 @@
 <template>
   <div class="flex-col gap-10 snap-mandatory snap-y">
-    <Logo :class="'m-auto md:hidden h-screen'" />
+    <Logo
+      :class="'m-auto sm:hidden h-screen items-center justify-center relative bottom-20'"
+    />
     <div
-      class="snap-start flex pb-10 flex-col items-center justify-center gap-10 z-1"
+      class="snap-start flex pb-10 flex-col items-center justify-center sm:items-start sm:align gap-10 z-1"
     >
       <h2 class="hidden md:block font-bold text-lg mb-5">Startseite</h2>
-      <p class="font-serif">
+      <p class="font-serif m-5">
         Die Neurodiverse Gemeinschaft e.V. ist ein gemeinnütziger Verein, der
         sich für die Selbstermächtigung und Selbsthilfe von neurodiversen
         Menschen einsetzt. Wir wollen neurodiversen Menschen Raum geben, um
@@ -18,9 +20,9 @@
       <!-- Agenda Columns  -->
 
       <div
-        class="flex flex-col gap-10 items-center justify-center py-5 w-2/3 bg-transparent border border-black border-solid rounded-tl-md rounded-tr-md rounded-br-md rounded-bl-md"
+        class="flex flex-col gap-20 items-center justify-center py-10 w-2/3 sm:max-w-1/2 bg-transparent border border-black border-solid rounded-tl-md rounded-tr-md rounded-br-md rounded-bl-md"
       >
-        <div class="flex flex-col gap-5 items-center justify-center">
+        <div class="flex flex-col gap-3 items-center justify-center">
           <h3
             class="text-black text-lg font-inter font-bold leading-6 break-words"
           >
@@ -34,7 +36,7 @@
             <li>Netzwerk</li>
           </ul>
         </div>
-        <div class="flex flex-col gap-5 items-center justify-center">
+        <div class="flex flex-col gap-3 items-center justify-center">
           <h3
             class="text-black text-lg font-inter font-bold leading-6 break-words"
           >
@@ -48,7 +50,7 @@
             <li>Gesundheit</li>
           </ul>
         </div>
-        <div class="flex flex-col gap-5 items-center justify-center">
+        <div class="flex flex-col gap-3 items-center justify-center">
           <h3
             class="text-black text-lg font-inter font-bold leading-6 break-words"
           >

@@ -1,16 +1,18 @@
 <template>
-  <div class="grid-cols-1 md:grid-cols-3 gap-[5rem] p-10">
-    <div class="hidden md:block md:h-screen md:left-column">
-      <!-- Left Column -->
-      <Logo />
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-5 p-10">
+    <!-- Left Column -->
+    <div class="hidden md:inline-block md:left-column">
+      <Logo :class="' md:h-screen fixed'" />
       <SocialMedia />
     </div>
-    <div class="md:px-20 md:w-1/2 md:m-auto">
-      <!-- Middle Content -->
+
+    <!-- Middle Content -->
+    <div class="md:items-center">
       <slot />
     </div>
+
+    <!-- Right Column / Navigation Menu -->
     <div class="">
-      <!-- Navigation Menu -->
       <NavigationMenu />
     </div>
   </div>
