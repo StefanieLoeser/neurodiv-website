@@ -2,7 +2,7 @@
   <Transition name="fade">
     <div
       v-if="openOverlay"
-      class="bg-[#4AF2EB] filter-none z-20 fixed bottom-20 m-10 w-[300px] border-t-2 border-r-8 border-b-8 border-l-2 border-black rounded-3xl rounded-tl-sm shadow-md"
+      class="bg-blue filter-none z-20 fixed bottom-20 m-10 w-[300px] border-t-2 border-r-8 border-b-8 border-l-2 border-black rounded-3xl rounded-tl-sm shadow-md"
     >
       <div class="px-5 py-6">
         <!-- close button  -->
@@ -34,7 +34,10 @@
                 @click="$emit('closeOverlay')"
               >
                 <template v-if="isActive('/')"
-                  ><Arrow :width="32" :height="32" class="mr-2" /></template
+                  ><Arrow
+                    :width="32"
+                    :height="32"
+                    class="mr-2 -rotate-45" /></template
                 ><span class="text-base">Startseite</span>
               </NuxtLink>
             </li>
@@ -45,7 +48,7 @@
                 @click="$emit('closeOverlay')"
               >
                 <template v-if="isActive('/about')">
-                  <Arrow :width="32" :height="32" class="mr-2"
+                  <Arrow :width="32" :height="32" class="mr-2 -rotate-45"
                 /></template>
                 <span class="text-base">Über uns</span>
               </NuxtLink>
@@ -57,7 +60,10 @@
                 @click="$emit('closeOverlay')"
               >
                 <template v-if="isActive('/contact')">
-                  <Arrow :width="32" :height="32" class="mr-2" /></template
+                  <Arrow
+                    :width="32"
+                    :height="32"
+                    class="mr-2 -rotate-45" /></template
                 ><span class="text-base">Kontakt</span></NuxtLink
               >
             </li>

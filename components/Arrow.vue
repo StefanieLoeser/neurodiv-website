@@ -4,7 +4,6 @@
     :width="width"
     :height="height"
     viewBox="0 0 24 24"
-    class="-rotate-45"
   >
     <path
       fill="none"

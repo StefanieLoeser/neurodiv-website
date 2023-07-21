@@ -28,7 +28,7 @@
           >
             Anliegen
           </h3>
-          <Arrow :width="24" :height="24" class="rotate-45 text-[#FF8A00]" />
+          <Arrow :width="24" :height="24" class="rotate-45 text-orange" />
           <ul class="text-center font-sans">
             <li>Selbsthilfe</li>
             <li>Information</li>
@@ -42,7 +42,7 @@
           >
             Themen
           </h3>
-          <Arrow :width="24" :height="24" class="rotate-45 text-[#FF8A00]" />
+          <Arrow :width="24" :height="24" class="rotate-45 text-orange" />
           <ul class="text-center font-sans">
             <li>Ausbildung</li>
             <li>Beruf</li>
@@ -56,7 +56,7 @@
           >
             Anliegen
           </h3>
-          <Arrow :width="24" :height="24" class="rotate-45 text-[#FF8A00]" />
+          <Arrow :width="24" :height="24" class="rotate-45 text-orange" />
           <ul class="text-center font-sans">
             <li>Repräsentation</li>
             <li>Unabhängigkeit</li>
