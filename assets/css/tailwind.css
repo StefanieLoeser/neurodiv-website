@@ -29,6 +29,6 @@
     @apply border-t-2 border-r-4 border-b-4 border-l-2 rounded-3xl rounded-tl-sm shadow-md;
   }
   .frame-s {
-    @apply rounded-tl-sm rounded-tr-lg rounded-bl-lg rounded-br-lg shadow drop-shadow-[1px_2px_0px_rgba(0,0,0)] border;
+    @apply rounded-tl-sm rounded-tr-xl rounded-bl-xl rounded-br-xl border-t border-r-4 border-b-4 border-l border;
   }
 }

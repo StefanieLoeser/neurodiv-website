@@ -68,6 +68,25 @@ import MobileNavBar from "./MobileNavBar.vue";
 
 const isDesktop = ref(false);
 
+const menuRoutes = [
+  {
+    label: "Startseite",
+    path: "/",
+  },
+  {
+    label: "Über uns",
+    path: "/about",
+  },
+  {
+    label: "Kontakt",
+    path: "/contact",
+  },
+  // {
+  //   label: "Blog",
+  //   path: "/blog",
+  // },
+];
+
 const isActive = (path) => {
   const route = useRoute();
   return route.path === path;

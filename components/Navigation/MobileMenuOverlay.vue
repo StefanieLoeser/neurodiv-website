@@ -73,7 +73,10 @@
                 class="flex items-center"
                 @click="$emit('closeOverlay')"
                 ><template v-if="isActive('/blog')">
-                  <Arrow :width="32" :height="32" class="mr-2" /></template
+                  <Arrow
+                    :width="32"
+                    :height="32"
+                    class="mr-2 -rotate-45" /></template
                 ><span class="text-base">Blog</span></NuxtLink
               >
             </li>

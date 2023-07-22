@@ -38,7 +38,7 @@
         <textarea
           id="message"
           v-model="form.message"
-          class="block w-full h-30 px-2 py-1 border border-gray-300 rounded-sm shadow-sm focus:outline-none focus:ring-1 focus:ring-orange focus:border-orange border-black"
+          class="block resize-y w-full h-content px-2 py-1 border border-gray-300 rounded-sm shadow-sm focus:outline-none focus:ring-1 focus:ring-orange focus:border-orange border-black"
         ></textarea>
       </div>
       <div class="mb-4">
@@ -59,7 +59,7 @@
           <div>
             <button
               type="submit"
-              class="w-auto h-auto px-6 py-2 relative top-1 text-black frame-s bg-orange font-sans text-sm"
+              class="px-6 py-2 relative top-1 frame-s bg-orange"
             >
               senden
             </button>
