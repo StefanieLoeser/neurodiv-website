@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-  ssr: false,
+  ssr: true,
   app: {
     pageTransition: { name: "page", mode: "out-in" },
   },
@@ -10,6 +10,11 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
   ],
   devtools: { enabled: true },
+  runtimeConfig: {
+    public: {
+      wordpressUrl: "https://neurodiversegemeinschaft.de/graphql",
+    },
+  },
   // router: {
   //   linkActiveClass: "active",
   //   linkExactActiveClass: "exact-active",
