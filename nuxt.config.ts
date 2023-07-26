@@ -8,8 +8,17 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "nuxt-icon",
     "@vueuse/nuxt",
+    "nuxt-graphql-client",
   ],
+
   devtools: { enabled: true },
+
+  runtimeConfig: {
+    public: {
+      wordpressUrl: "https://neurodiversegemeinschaft.de/graphql",
+    },
+  },
+
   // router: {
   //   linkActiveClass: "active",
   //   linkExactActiveClass: "exact-active",
