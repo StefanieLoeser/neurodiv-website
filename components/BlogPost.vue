@@ -1,11 +1,13 @@
 <template>
   <div class="frame-s flex flex-col gap-5 mb-10 p-5">
     <div>
-      <h2 class="font-sans text-md font-bold underline pb-1">
+      <p class="font-sans font-medium text-sm pb-1">
+        {{ new Date(blogDate).toLocaleDateString() }}
+      </p>
+      <h2 class="font-sans text-md font-bold underline pb-2">
         {{ blogTitle }}
       </h2>
-      <p class="font-sans pb-1">{{ blogIntro }}</p>
-      <p class="font-sans text-sm pb-2">{{ blogDate }}</p>
+      <p class="font-sans pb-5">{{ blogIntro }}</p>
       <div class="flex flex-wrap gap-2">
         <div
           v-if="blogCategory.length > 0"

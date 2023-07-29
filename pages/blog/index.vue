@@ -7,7 +7,7 @@
       :key="post.title"
       :blog-title="post.title"
       :blog-date="post.date"
-      :blog-intro="post.excerpt"
+      :blog-intro="stripHTMLTags(post.excerpt)"
       :blog-tags="post.tags.nodes"
       :blog-category="post.categories.nodes"
     />
@@ -56,6 +56,11 @@ posts.value = data.value;
 watchEffect(() => {
   console.log("fetched data", posts.value);
 });
+
+function stripHTMLTags(html) {
+  const doc = new DOMParser().parseFromString(html, "text/html");
+  return doc.body.textContent || "";
+}
 
 // const blogPosts = [
 //   {
