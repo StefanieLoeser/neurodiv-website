@@ -5,13 +5,17 @@
         {{ blogTitle }}
       </h2>
       <p class="font-sans pb-1">{{ blogIntro }}</p>
-      <p class="font-sans text-sm pb-1">{{ blogDate }}</p>
+      <p class="font-sans text-sm pb-2">{{ blogDate }}</p>
       <div class="flex flex-wrap gap-2">
-        <div v-if="blogCategory" class="frame-s text-sm py-2 px-3 bg-orange">
-          {{ blogCategory }}
+        <div
+          v-if="blogCategory.length > 0"
+          v-for="category in blogCategory"
+          class="frame-s text-sm py-2 px-3 bg-orange"
+        >
+          {{ category.name }}
         </div>
         <div v-for="tag in blogTags" class="frame-s text-sm py-2 px-3">
-          {{ tag }}
+          {{ tag.name }}
         </div>
       </div>
     </div>

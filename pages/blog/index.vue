@@ -2,72 +2,60 @@
   <div class="pb-10">
     <h2 class="text-head">Blog</h2>
 
-    <!-- <div>
-      <ul>
-        <li v-for="post in posts" :key="post.id">
-          <h2>{{ post.title }}</h2>
-          <div v-html="post.content"></div>
-          <p>{{ post.date }}</p>
-        </li>
-      </ul>
-    </div> -->
-
-    <!-- <BlogPost
-      v-for="blog in blogPosts"
-      :key="blog.title"
-      :blog-title="blog.title"
-      :blog-date="blog.date"
-      :blog-intro="blog.intro"
-      :blog-tags="blog.tags"
-      :blog-category="blog.category"
-    /> -->
+    <BlogPost
+      v-for="post in posts"
+      :key="post.title"
+      :blog-title="post.title"
+      :blog-date="post.date"
+      :blog-intro="post.excerpt"
+      :blog-tags="post.tags.nodes"
+      :blog-category="post.categories.nodes"
+    />
   </div>
 </template>
 
 <script setup>
 const route = useRoute();
 const config = useRuntimeConfig();
-
-// const data = await $fetch(config.wordpressUrl, {
-//   method: "POST",
-//   body: {
-//     query: `
-
-const { data } = await useAsyncGgl({
-  operation: "query",
-  body: {
+const { data, refresh, pending } = await useFetch(config.public.wordpressUrl, {
+  method: "get",
+  query: {
     query: `
       query GetPosts {
         posts {
           nodes {
             id
             title
-            content
+            excerpt
+            date
+            tags {
+              nodes {
+                name
+              }
+            }
+            categories {
+              nodes {
+                name
+              }
+            }
           }
+
+          
         }
       }
     `,
   },
+  transform(data) {
+    return data.data.posts.nodes;
+  },
 });
 
-onMounted(() => {
-  console.log("fetched data", data);
+const posts = ref([]);
+posts.value = data.value;
+
+watchEffect(() => {
+  console.log("fetched data", posts.value);
 });
-
-// const query = gql`
-//   query GetPosts {
-//     posts {
-//       nodes {
-//         id
-//         title
-//         content
-//       }
-//     }
-//   }
-// `;
-
-// const variables = { limit: 5 };
-// const { data } = await useAsyncQuery(query, variables);
 
 // const blogPosts = [
 //   {
