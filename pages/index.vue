@@ -20,7 +20,7 @@
       <!-- Agenda Columns  -->
 
       <div
-        class="flex flex-col md:grid md:grid-cols-[30%_30%_40%] gap-10 md:gap-10 items-center md:items-start justify-center py-10 w-2/3 md:w-auto md:px-20 border border-black border-solid rounded-tl-sm rounded-tr-md rounded-br-md rounded-bl-md"
+        class="flex flex-col md:grid md:grid-cols-[30%_30%_40%] gap-10 md:gap-10 items-center md:items-start justify-center pb-10 pt-5 w-2/3 md:w-auto md:px-20 border border-black border-solid rounded-tl-sm rounded-tr-md rounded-br-md rounded-bl-md"
       >
         <div class="flex flex-col gap-3 items-center justify-center">
           <h3
