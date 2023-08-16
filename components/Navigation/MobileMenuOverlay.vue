@@ -41,6 +41,21 @@
                 ><span class="text-base">Startseite</span>
               </NuxtLink>
             </li>
+            <li
+              :class="{
+                'menu-item': true,
+                active: isActive('/neurodiversitaet'),
+              }"
+            >
+              <NuxtLink to="neurodiversitaet" exact class="flex items-center">
+                <template v-if="isActive('/neurodiversitaet')"
+                  ><Arrow
+                    :width="24"
+                    :height="24"
+                    class="mr-2 -rotate-45" /></template
+                ><span class="text-base">Neurodiversität</span>
+              </NuxtLink>
+            </li>
             <li :class="{ 'menu-item': true, active: isActive('/about') }">
               <NuxtLink
                 to="/about"
