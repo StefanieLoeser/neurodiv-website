@@ -85,7 +85,7 @@
 
         <!-- imprint info -->
 
-        <ImprintInfo class="relative left-3 bottom-2" />
+        <ImprintInfo class="relative left-3 bottom-2" @close="closeOverlay" />
       </div>
     </div>
   </Transition>

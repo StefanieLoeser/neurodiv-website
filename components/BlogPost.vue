@@ -30,7 +30,7 @@ const props = defineProps({
   blogIntro: String,
   blogDate: String,
   blogTags: Array,
-  blogCategory: String,
+  blogCategory: Array,
 });
 </script>
 

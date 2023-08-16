@@ -4,7 +4,19 @@
 
 @layer base {
   p {
-    @apply hyphens-auto;
+    @apply hyphens-auto my-2;
+  }
+  h1 {
+    @apply font-sans font-bold text-2xl my-5;
+  }
+  h2 {
+    @apply font-sans font-bold text-lg my-5;
+  }
+  h3 {
+    @apply font-sans font-bold text-lg my-5;
+  }
+  h4 {
+    @apply font-sans font-bold text-lg my-5;
   }
 }
 

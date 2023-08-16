@@ -4,16 +4,22 @@
   >
     <ul class="flex-col p-3">
       <li class="pb-2">
-        <NuxtLink to="/datenschutz"> Datenschutzhinweise </NuxtLink>
+        <NuxtLink to="/datenschutz" @click="$emit('close')">
+          Datenschutzhinweise
+        </NuxtLink>
       </li>
       <li>
-        <NuxtLink to="/imprint">Impressum</NuxtLink>
+        <NuxtLink to="/imprint" @click="$emit('close')">Impressum</NuxtLink>
       </li>
     </ul>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+const props = defineProps({
+  close: Function,
+});
+</script>
 
 <style>
 .imprint {
