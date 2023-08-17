@@ -22,8 +22,13 @@
     "@apollo/client": "^3.8.1",
     "@headlessui/vue": "^1.7.14",
     "@heroicons/vue": "^2.0.18",
+    "@pinia/nuxt": "^0.4.11",
     "graphql": "^16.8.0",
     "nuxt-graphql-client": "^0.2.29",
+    "pinia": "^2.1.6",
     "tailwindcss": "^3.3.3"
+  },
+  "overrides": {
+    "vue": "latest"
   }
 }

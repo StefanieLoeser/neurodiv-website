@@ -19,11 +19,10 @@ import BurgerMenu from "@/components/Navigation/BurgerMenu.vue";
 
 const open = ref(false);
 
-const toggleBurger = () => {
-  open.value = !open.value;
-};
-
 const handleCloseOverlay = () => {
   open.value = false;
+};
+const toggleBurger = () => {
+  open.value = !open.value;
 };
 </script>

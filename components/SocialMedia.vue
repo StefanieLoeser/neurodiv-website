@@ -1,5 +1,5 @@
 <template>
-  <div class="flex gap-5 px-5 md:p-0 my-auto md:fixed md:bottom-0">
+  <div class="flex gap-5 px-5 md:pb-5 md:p-0 my-auto md:fixed md:bottom-0">
     <a href="https://www.instagram.com/neurodiversegemeinschaft/">
       <img
         src="@/assets/icons/icons8-instagram.svg"

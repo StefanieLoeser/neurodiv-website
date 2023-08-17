@@ -107,7 +107,7 @@
 
         <ImprintInfo
           class="relative left-3 bottom-2"
-          @closeOverlay="closeOverlay"
+          @closeOverlay="$emit('closeOverlay')"
         />
       </div>
     </div>
@@ -121,7 +121,6 @@ import closeIcon from "@/assets/icons/icons8-loeschen-100.png";
 
 const props = defineProps({
   openOverlay: Boolean,
-  closeOverlay: Function,
 });
 const emit = defineEmits(["closeOverlay"]);
 

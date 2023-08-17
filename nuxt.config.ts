@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     "nuxt-icon",
     "@vueuse/nuxt",
     "nuxt-graphql-client",
+    "@pinia/nuxt",
   ],
 
   devtools: { enabled: true },
