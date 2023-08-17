@@ -4,19 +4,22 @@
 
 @layer base {
   p {
-    @apply hyphens-auto my-2;
+    @apply hyphens-auto mb-2;
   }
   /* h1 {
     @apply font-sans font-bold text-2xl my-5;
   } */
   h2 {
-    @apply font-sans font-bold text-lg my-5;
+    @apply font-sans font-bold text-lg mb-5;
   }
   h3 {
-    @apply font-sans font-bold text-lg my-5;
+    @apply font-sans font-bold text-lg mb-5;
   }
   h4 {
-    @apply font-sans font-bold text-lg my-5;
+    @apply font-sans font-bold text-lg mb-5;
+  }
+  img {
+    @apply my-5;
   }
 }
 
@@ -27,6 +30,10 @@
 
   .text-sans {
     @apply font-sans;
+  }
+
+  .icon {
+    @apply m-0;
   }
 
   .text-head {

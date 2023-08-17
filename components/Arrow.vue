@@ -4,6 +4,7 @@
     :width="width"
     :height="height"
     viewBox="0 0 24 24"
+    class="icon"
   >
     <path
       fill="none"

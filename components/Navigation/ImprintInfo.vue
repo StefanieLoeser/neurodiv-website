@@ -4,12 +4,14 @@
   >
     <ul class="flex-col p-3">
       <li class="pb-2">
-        <NuxtLink to="/datenschutz" @click="$emit('close')">
+        <NuxtLink to="/datenschutz" @click="$emit('closeOverlay')">
           Datenschutzhinweise
         </NuxtLink>
       </li>
       <li>
-        <NuxtLink to="/imprint" @click="$emit('close')">Impressum</NuxtLink>
+        <NuxtLink to="/imprint" @click="$emit('closeOverlay')"
+          >Impressum</NuxtLink
+        >
       </li>
     </ul>
   </div>
@@ -17,8 +19,10 @@
 
 <script setup>
 const props = defineProps({
-  close: Function,
+  closeOverlay: Function,
 });
+
+const emit = defineEmits(["closeOverlay"]);
 </script>
 
 <style>

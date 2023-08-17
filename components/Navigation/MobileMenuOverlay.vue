@@ -17,7 +17,7 @@
             <img
               :src="closeIcon"
               alt="close mobile menu"
-              class="w-12 h-12 md:w-20 md:h-20"
+              class="w-12 h-12 md:w-20 md:h-20 icon"
             />
           </button>
         </div>
@@ -47,7 +47,12 @@
                 active: isActive('/neurodiversitaet'),
               }"
             >
-              <NuxtLink to="neurodiversitaet" exact class="flex items-center">
+              <NuxtLink
+                to="neurodiversitaet"
+                exact
+                class="flex items-center"
+                @click="$emit('closeOverlay')"
+              >
                 <template v-if="isActive('/neurodiversitaet')"
                   ><Arrow
                     :width="24"
@@ -100,7 +105,10 @@
 
         <!-- imprint info -->
 
-        <ImprintInfo class="relative left-3 bottom-2" @close="closeOverlay" />
+        <ImprintInfo
+          class="relative left-3 bottom-2"
+          @closeOverlay="closeOverlay"
+        />
       </div>
     </div>
   </Transition>
@@ -113,6 +121,7 @@ import closeIcon from "@/assets/icons/icons8-loeschen-100.png";
 
 const props = defineProps({
   openOverlay: Boolean,
+  closeOverlay: Function,
 });
 const emit = defineEmits(["closeOverlay"]);
 
