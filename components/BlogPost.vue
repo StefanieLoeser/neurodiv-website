@@ -13,10 +13,15 @@
           v-if="blogCategory.length > 0"
           v-for="category in blogCategory"
           class="frame-s text-sm py-2 px-3 bg-orange"
+          @click="emitFilterByCategory(category.name)"
         >
           {{ category.name }}
         </div>
-        <div v-for="tag in blogTags" class="frame-s text-sm py-2 px-3">
+        <div
+          v-for="tag in blogTags"
+          class="frame-s text-sm py-2 px-3"
+          @click="emitFilterByTag(tag.name)"
+        >
           {{ tag.name }}
         </div>
       </div>
@@ -32,6 +37,17 @@ const props = defineProps({
   blogTags: Array,
   blogCategory: Array,
 });
+
+// Emit events to the parent component
+const emit = defineEmits(["filterByCategory", "filterByTag"]);
+
+const emitFilterByCategory = (categoryName) => {
+  emit("filterByCategory", categoryName);
+};
+
+const emitFilterByTag = (tagName) => {
+  emit("filterByTag", tagName);
+};
 </script>
 
 <style></style>

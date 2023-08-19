@@ -48,7 +48,7 @@
               }"
             >
               <NuxtLink
-                to="neurodiversitaet"
+                to="/neurodiversitaet"
                 exact
                 class="flex items-center"
                 @click="$emit('closeOverlay')"

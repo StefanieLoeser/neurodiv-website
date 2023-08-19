@@ -3,8 +3,8 @@
     <h2 class="text-head">Blog</h2>
     <div v-if="pending" class="">Loading...</div>
     <NuxtLink
-      v-if="posts"
-      v-for="post in posts"
+      v-if="filteredPosts.length > 0"
+      v-for="post in filteredPosts"
       :key="post.id"
       :to="`/blog${post.uri}`"
     >
@@ -15,7 +15,8 @@
         :blog-intro="stripHTMLTags(post.excerpt)"
         :blog-tags="post.tags.nodes"
         :blog-category="post.categories.nodes"
-      />
+        @filterByTag="selectedTag = $event"
+      ></BlogPost>
     </NuxtLink>
   </div>
 </template>
@@ -51,7 +52,7 @@ const {
             uri
           }
 
-          
+
         }
       }
     `,
@@ -61,11 +62,20 @@ const {
   },
 });
 
-// const posts = ref([]);
-// posts.value = data.value;
+let selectedTag = ref(null);
+
+const filteredPosts = computed(() => {
+  if (!selectedTag.value) {
+    return posts.value; // No filter applied, show all posts
+  }
+  // Filter the posts by the selected tag or category
+  return posts.value.filter((post) =>
+    post.tags.nodes.some((tag) => tag.name === selectedTag.value)
+  );
+});
 
 watchEffect(() => {
-  console.log("fetched data", posts.value);
+  console.log("selected Tag", selectedTag);
 });
 
 function stripHTMLTags(html) {
@@ -73,5 +83,3 @@ function stripHTMLTags(html) {
   return doc.body.textContent || "";
 }
 </script>
-
-<style></style>

@@ -25,7 +25,7 @@
               active: isActive('/neurodiversitaet'),
             }"
           >
-            <NuxtLink to="neurodiversitaet" exact class="flex items-center">
+            <NuxtLink to="/neurodiversitaet" exact class="flex items-center">
               <template v-if="isActive('/neurodiversitaet')"
                 ><Arrow
                   :width="24"
