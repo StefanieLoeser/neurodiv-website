@@ -15,14 +15,14 @@
         v-if="data.categories.nodes.length > 0"
         v-for="category in data.categories.nodes"
         @click="navigateToFilteredPosts('category', category.name)"
-        class="frame-s text-sm py-2 px-3 bg-orange"
+        class="frame-s text-sm py-2 px-3 bg-orange cursor-pointer"
       >
         {{ category.name }}
       </div>
       <div
         v-for="tag in data.tags.nodes"
         @click="navigateToFilteredPosts('tag', tag.name)"
-        class="frame-s text-sm py-2 px-3"
+        class="frame-s text-sm py-2 px-3 cursor-pointer"
       >
         {{ tag.name }}
       </div>

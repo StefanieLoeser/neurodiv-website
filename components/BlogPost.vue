@@ -14,14 +14,14 @@
         <div
           v-if="blogCategory.length > 0"
           v-for="category in blogCategory"
-          class="frame-s text-sm py-2 px-3 bg-orange pointer"
+          class="frame-s text-sm py-2 px-3 bg-orange cursor-pointer"
           @click="emitFilterByCategory(category.name)"
         >
           {{ category.name }}
         </div>
         <div
           v-for="tag in blogTags"
-          class="frame-s text-sm py-2 px-3 pointer"
+          class="frame-s text-sm py-2 px-3 cursor-pointer"
           @click="emitFilterByTag(tag.name)"
         >
           {{ tag.name }}
