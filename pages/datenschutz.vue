@@ -30,10 +30,6 @@ const { data, pending, refresh, error } = await useFetch(
     },
   }
 );
-
-onMounted(() => {
-  console.log("data", data.value);
-});
 </script>
 
 <style>
