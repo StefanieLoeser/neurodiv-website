@@ -27,30 +27,10 @@
         {{ tag.name }}
       </div>
     </div>
-    <div class="fixed bottom-1 right-20 z-[100]">
-      <!-- Scroll to Top Button -->
-      <button @click="router.back">
-        <Arrow
-          :width="38"
-          :height="38"
-          class="text-gray-800 mr-4 -rotate-[-135deg]"
-        />
-      </button>
-
-      <!-- Go back Button -->
-      <button @click="scrollToTop">
-        <Arrow
-          :width="38"
-          :height="38"
-          class="text-gray-800 mr-2 -rotate-[135deg]"
-        />
-      </button>
-    </div>
   </div>
 </template>
 
 <script setup>
-import Arrow from "../../components/Arrow.vue";
 const route = useRoute();
 const router = useRouter();
 const uri = route.params.uri.join("/");
@@ -92,13 +72,6 @@ const { data, pending, refresh, error } = await useFetch(
     },
   }
 );
-
-const scrollToTop = () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
-};
 
 const navigateToFilteredPosts = (filterType, filterValue) => {
   router.push({ path: "/blog", query: { [filterType]: filterValue } });

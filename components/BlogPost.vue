@@ -52,5 +52,3 @@ const emitFilterByTag = (tagName) => {
   emit("filterByTag", tagName);
 };
 </script>
-
-<style></style>

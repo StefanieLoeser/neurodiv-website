@@ -5,7 +5,6 @@
     :height="height"
     viewBox="0 0 24 24"
     class="icon"
-    fill="currentColor"
   >
     <path
       fill="none"
@@ -21,5 +20,3 @@
 <script setup>
 const { width, height } = defineProps(["width", "height"]);
 </script>
-
-<style></style>

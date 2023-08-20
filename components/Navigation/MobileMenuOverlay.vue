@@ -119,14 +119,15 @@ import ImprintInfo from "./ImprintInfo.vue";
 import Arrow from "@/components/Arrow.vue";
 import closeIcon from "@/assets/icons/icons8-loeschen-100.png";
 
+const route = useRoute();
+
 const props = defineProps({
   openOverlay: Boolean,
 });
 const emit = defineEmits(["closeOverlay"]);
 
 const isActive = (path) => {
-  const route = useRoute();
-  return route.path === path;
+  return path === "/blog" ? route.path.startsWith(path) : route.path === path;
 };
 </script>
 
