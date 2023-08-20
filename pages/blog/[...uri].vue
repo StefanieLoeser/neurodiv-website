@@ -14,11 +14,16 @@
       <div
         v-if="data.categories.nodes.length > 0"
         v-for="category in data.categories.nodes"
+        @click="navigateToFilteredPosts('category', category.name)"
         class="frame-s text-sm py-2 px-3 bg-orange"
       >
         {{ category.name }}
       </div>
-      <div v-for="tag in data.tags.nodes" class="frame-s text-sm py-2 px-3">
+      <div
+        v-for="tag in data.tags.nodes"
+        @click="navigateToFilteredPosts('tag', tag.name)"
+        class="frame-s text-sm py-2 px-3"
+      >
         {{ tag.name }}
       </div>
     </div>
@@ -27,6 +32,7 @@
 
 <script setup>
 const route = useRoute();
+const router = useRouter();
 const uri = route.params.uri.join("/");
 const config = useRuntimeConfig();
 const { data, pending, refresh, error } = await useFetch(
@@ -66,11 +72,11 @@ const { data, pending, refresh, error } = await useFetch(
   }
 );
 
+const navigateToFilteredPosts = (filterType, filterValue) => {
+  router.push({ path: "/blog", query: { [filterType]: filterValue } });
+};
+
 useHead({
   title: data.value.title,
-});
-
-onMounted(() => {
-  console.log("data", data.value);
 });
 </script>
