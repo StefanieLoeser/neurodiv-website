@@ -75,6 +75,7 @@ let selectedFilter = ref(null);
 let filterType = ref(null);
 
 onMounted(() => {
+  window.scrollTo(0, 0);
   if (route.query.tag) {
     selectedFilter.value = route.query.tag;
     filterType.value = "tag";
@@ -103,7 +104,7 @@ const filteredPosts = computed(() => {
   if (!selectedFilter.value || !filterType.value) {
     return posts.value; // No filter applied, show all posts
   }
-
+  window.scrollTo(0, 0);
   if (filterType.value === "tag") {
     // Filter by tag
     return posts.value.filter((post) =>

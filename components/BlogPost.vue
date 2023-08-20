@@ -46,12 +46,10 @@ const emit = defineEmits(["filterByCategory", "filterByTag"]);
 
 const emitFilterByCategory = (categoryName) => {
   console.log("emitFilterByCategory", categoryName);
-  emit("filterByCategory", categoryName);
 };
 
 const emitFilterByTag = (tagName) => {
   console.log("emitFilterByTag", tagName);
-  emit("filterByTag", tagName);
 };
 </script>
 
