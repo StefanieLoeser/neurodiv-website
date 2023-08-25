@@ -2,7 +2,7 @@
   <Transition name="fade">
     <div
       v-if="openOverlay"
-      class="bg-blue filter-none z-20 fixed bottom-20 m-10 w-[300px] border-t-2 border-r-8 border-b-8 border-l-2 border-black rounded-3xl rounded-tl-sm shadow-md"
+      class="bg-blue filter-none z-20 fixed bottom-20 m-10 w-4/5 border-t-2 border-r-8 border-b-8 border-l-2 border-black rounded-3xl rounded-tl-sm shadow-md"
     >
       <div class="px-5 py-6">
         <!-- close button  -->

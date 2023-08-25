@@ -38,7 +38,7 @@
         <textarea
           id="message"
           v-model="form.message"
-          class="block resize-y w-full h-content px-2 py-1 border border-gray-300 rounded-sm shadow-sm focus:outline-none focus:ring-1 focus:ring-orange focus:border-orange border-black"
+          class="block resize-y w-full min-h-[7rem] px-2 py-1 border border-gray-300 leading-4 rounded-sm shadow-sm focus:outline-none focus:ring-1 focus:ring-orange focus:border-orange border-black"
         ></textarea>
       </div>
       <div class="mb-4">
@@ -48,10 +48,10 @@
               type="checkbox"
               id="interest"
               v-model="form.interest"
-              class="h-4 w-4 relative top-1 text-orange border border-black rounded"
+              class="h-4 w-4 relative top-2 text-orange border border-black rounded"
             />
             <span
-              class="ml-2 hyphens-auto font-sans font-medium text-gray-700 leading-"
+              class="ml-2 hyphens-auto font-sans font-medium text-gray-700 leading-4"
               >Interesse an<br />
               Infos zu einer<br />Mitgliedschaft?</span
             >
@@ -81,9 +81,113 @@ const form = ref({
   interest: false,
 });
 
-const submitForm = () => {
+const fetchNonce = async () => {
+  const nonceResponse = await fetch(
+    "https://neurodiversegemeinschaft.de/wp-json/email-sender-custom/v1/get-nonce/"
+  );
+  const nonce = await nonceResponse.text();
+  return nonce;
+};
+
+const submitForm = async () => {
   console.log(form.value);
+  try {
+    const nonce = await fetchNonce();
+    console.log("nonce", nonce);
+
+    const formData = {
+      name: form.value.name,
+      email: form.value.email,
+      subject: form.value.subject,
+      message: form.value.message,
+      my_form_nonce: nonce,
+    };
+
+    const response = await fetch(
+      "https://neurodiversegemeinschaft.de/wp-json/email-sender-custom/v1/send/",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      }
+    );
+
+    console.log("Response", response);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const responseData = await response.json();
+    console.log(responseData);
+
+    // You can also add some user feedback here, like a success message or error message based on the response.
+  } catch (error) {
+    console.error("There was an error submitting the form:", error);
+    // Here you can handle the error, for example, show an error message to the user.
+  }
 };
 </script>
 
-<style></style>
+<!-- <script setup>
+import { ref } from "vue";
+
+const form = ref({
+  name: "",
+  email: "",
+  subject: "",
+  message: "",
+  interest: false,
+});
+
+const fetchNonce = async () => {
+  const nonceResponse = await fetch(
+    "https://your-wordpress-site.com/wp-json/email-sender-custom/v1/get-nonce/"
+  );
+  const nonce = await nonceResponse.text();
+  return nonce;
+};
+
+const submitForm = async () => {
+  console.log(form.value);
+  try {
+    const nonce = await fetchNonce();
+    console.log("nonce", nonce);
+
+    const formData = {
+      name: form.value.name,
+      email: form.value.email,
+      subject: form.value.subject,
+      message: form.value.message,
+      my_form_nonce: nonce,
+    };
+
+    const response = await fetch(
+      "https://neurodiversegemeinschaft.de/wp-json/email-sender-custom/v1/send/",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const responseData = await response.json();
+    console.log(responseData);
+
+    // You can also add some user feedback here, like a success message or error message based on the response.
+  } catch (error) {
+    console.error("There was an error submitting the form:", error);
+    // Here you can handle the error, for example, show an error message to the user.
+  }
+};
+</script> -->
