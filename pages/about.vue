@@ -1,6 +1,6 @@
 <template>
   <div class="pb-10">
-    <h2 class="text-head">Über uns</h2>
+    <h2 class="text-head">{{ aboutPage?.acf?.title }}</h2>
 
     <div class="flex flex-col gap-10">
       <div
