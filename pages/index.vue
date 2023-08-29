@@ -58,6 +58,12 @@
           lang="de"
           v-html="startseite.acf.wasWirWollen"
         ></div>
+        <!-- Was wir wollen 2 -->
+        <div
+          class="m-5 md:mx-0 md:my-5"
+          lang="de"
+          v-html="startseite.acf.wasWirWollen2"
+        ></div>
       </div>
     </div>
   </div>
@@ -68,7 +74,7 @@ const store = usePagesStore();
 
 store.fetchPages();
 
-const startseite = computed(() => store.getPageByTitle("Startseite"));
+const startseite = computed(() => store.getPageById(19));
 
 watch(startseite, () => {
   console.log("startseite", startseite.value);
