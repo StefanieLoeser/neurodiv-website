@@ -1,9 +1,18 @@
 <template>
-  <h2>Datenschutzhinweise</h2>
+  <div>
+    <div v-if="!datenschutz || !datenschutz.acf">Loading...</div>
+    <div v-else class="pb-10">
+      <h2 class="text-head">{{ datenschutz.acf?.title }}</h2>
+
+      <div v-html="datenschutz.acf?.datenschutz"></div>
+    </div>
+  </div>
 </template>
 
-<script>
-export default {};
-</script>
+<script setup>
+const store = usePagesStore();
 
-<style></style>
+store.fetchPages();
+
+const datenschutz = computed(() => store.getPageById(3));
+</script>

@@ -4,7 +4,7 @@
       <img
         :src="!openBurger ? menuIcon : closeIcon"
         alt="menu icon"
-        class="w-12 h-12 md:w-20 md:h-20"
+        class="w-12 h-12 md:w-20 md:h-20 icon"
       />
       <span class="sr-only">Open main menu</span>
     </button>

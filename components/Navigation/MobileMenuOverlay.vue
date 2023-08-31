@@ -2,7 +2,7 @@
   <Transition name="fade">
     <div
       v-if="openOverlay"
-      class="bg-blue filter-none z-20 fixed bottom-20 m-10 w-[300px] border-t-2 border-r-8 border-b-8 border-l-2 border-black rounded-3xl rounded-tl-sm shadow-md"
+      class="bg-blue filter-none z-20 fixed bottom-20 m-10 w-4/5 border-t-2 border-r-8 border-b-8 border-l-2 border-black rounded-3xl rounded-tl-sm shadow-md"
     >
       <div class="px-5 py-6">
         <!-- close button  -->
@@ -17,7 +17,7 @@
             <img
               :src="closeIcon"
               alt="close mobile menu"
-              class="w-12 h-12 md:w-20 md:h-20"
+              class="w-12 h-12 md:w-20 md:h-20 icon"
             />
           </button>
         </div>
@@ -41,6 +41,26 @@
                 ><span class="text-base">Startseite</span>
               </NuxtLink>
             </li>
+            <li
+              :class="{
+                'menu-item': true,
+                active: isActive('/neurodiversitaet'),
+              }"
+            >
+              <NuxtLink
+                to="/neurodiversitaet"
+                exact
+                class="flex items-center"
+                @click="$emit('closeOverlay')"
+              >
+                <template v-if="isActive('/neurodiversitaet')"
+                  ><Arrow
+                    :width="24"
+                    :height="24"
+                    class="mr-2 -rotate-45" /></template
+                ><span class="text-base">Neurodiversität</span>
+              </NuxtLink>
+            </li>
             <li :class="{ 'menu-item': true, active: isActive('/about') }">
               <NuxtLink
                 to="/about"
@@ -52,6 +72,34 @@
                 /></template>
                 <span class="text-base">Über uns</span>
               </NuxtLink>
+            </li>
+            <li :class="{ 'menu-item': true, active: isActive('/satzung') }">
+              <NuxtLink
+                to="/satzung"
+                class="flex items-center"
+                @click="$emit('closeOverlay')"
+              >
+                <template v-if="isActive('/satzung')">
+                  <Arrow
+                    :width="24"
+                    :height="24"
+                    class="mr-2 -rotate-45" /></template
+                ><span class="text-base">Satzung</span></NuxtLink
+              >
+            </li>
+
+            <li :class="{ 'menu-item': true, active: isActive('/blog') }">
+              <NuxtLink
+                to="/blog"
+                class="flex items-center"
+                @click="$emit('closeOverlay')"
+                ><template v-if="isActive('/blog')">
+                  <Arrow
+                    :width="32"
+                    :height="32"
+                    class="mr-2 -rotate-45" /></template
+                ><span class="text-base">Blog</span></NuxtLink
+              >
             </li>
             <li :class="{ 'menu-item': true, active: isActive('/contact') }">
               <NuxtLink
@@ -67,25 +115,15 @@
                 ><span class="text-base">Kontakt</span></NuxtLink
               >
             </li>
-            <li :class="{ 'menu-item': true, active: isActive('/blog') }">
-              <NuxtLink
-                to="/blog"
-                class="flex items-center"
-                @click="$emit('closeOverlay')"
-                ><template v-if="isActive('/blog')">
-                  <Arrow
-                    :width="32"
-                    :height="32"
-                    class="mr-2 -rotate-45" /></template
-                ><span class="text-base">Blog</span></NuxtLink
-              >
-            </li>
           </ul>
         </div>
 
         <!-- imprint info -->
 
-        <ImprintInfo class="relative left-3 bottom-2" />
+        <ImprintInfo
+          class="relative left-3 bottom-2"
+          @closeOverlay="$emit('closeOverlay')"
+        />
       </div>
     </div>
   </Transition>
@@ -96,14 +134,15 @@ import ImprintInfo from "./ImprintInfo.vue";
 import Arrow from "@/components/Arrow.vue";
 import closeIcon from "@/assets/icons/icons8-loeschen-100.png";
 
+const route = useRoute();
+
 const props = defineProps({
   openOverlay: Boolean,
 });
 const emit = defineEmits(["closeOverlay"]);
 
 const isActive = (path) => {
-  const route = useRoute();
-  return route.path === path;
+  return path === "/blog" ? route.path.startsWith(path) : route.path === path;
 };
 </script>
 

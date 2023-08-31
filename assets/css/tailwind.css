@@ -6,6 +6,28 @@
   p {
     @apply hyphens-auto;
   }
+  /* h1 {
+    @apply font-sans font-bold text-2xl my-5;
+  } */
+  h2 {
+    @apply font-sans font-bold text-lg;
+  }
+  h3 {
+    @apply font-sans font-bold text-lg mb-5;
+  }
+  h4 {
+    @apply font-sans font-bold text-lg mb-5;
+  }
+  img {
+    @apply my-5;
+  }
+  /* ul {
+    @apply my-10;
+  } */
+  /* 
+  li {
+    @apply list-disc;
+  } */
 }
 
 @layer components {
@@ -17,12 +39,20 @@
     @apply font-sans;
   }
 
+  .icon {
+    @apply m-0;
+  }
+
   .text-head {
     @apply font-sans font-bold text-lg mb-5;
   }
 
   .img-team {
     @apply w-3/4 h-auto border-t-2 border-r-4 border-b-4 border-l-2 rounded-3xl rounded-tl-sm shadow-md;
+  }
+
+  .item-none {
+    @apply list-none;
   }
 
   .frame {

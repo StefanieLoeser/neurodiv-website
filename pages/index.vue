@@ -3,72 +3,90 @@
     <Logo
       :class="'m-auto sm:hidden h-screen items-center justify-center relative bottom-20'"
     />
-    <h2 class="hidden md:block font-bold text-lg mb-5">Startseite</h2>
-    <div
-      class="snap-start flex flex-col gap-10 pb-10 items-center justify-center"
-    >
-      <p class="font-serif m-5 md:mx-0 md:my-5" lang="de">
-        Die Neurodiverse Gemeinschaft e.V. ist ein gemeinnütziger Verein, der
-        sich für die Selbstermächtigung und Selbsthilfe von neurodiversen
-        Menschen einsetzt. Wir wollen neurodiversen Menschen Raum geben, um
-        ihren Wert als Menschen, als Gruppe, als Teil dieser Gesellschaft zu be-
-        und ergreifen. Wir verstehen neurodiverse Konditionen als die
-        Lebensumstände von vollwertigen Menschen und nicht als etwas, was zu
-        heilen oder zu “bewältigen” ist.
-      </p>
-
-      <!-- Agenda Columns  -->
-
+    <div v-if="!startseite || !startseite.acf">Loading...</div>
+    <div v-else>
+      <h2 class="hidden md:block font-bold text-lg mb-5">
+        {{ startseite?.acf?.titel }}
+      </h2>
       <div
-        class="flex flex-col gap-10 items-center justify-center py-10 w-2/3 sm:max-w-1/2 border border-black border-solid rounded-tl-sm rounded-tr-md rounded-br-md rounded-bl-md"
+        class="snap-start flex flex-col gap-10 pb-10 items-center justify-center"
       >
-        <div class="flex flex-col gap-3 items-center justify-center">
-          <h3
-            class="text-black text-lg font-inter font-bold leading-6 break-words"
-          >
-            Anliegen
-          </h3>
-          <Arrow :width="24" :height="24" class="rotate-45 text-orange" />
-          <ul class="text-center font-sans">
-            <li>Selbsthilfe</li>
-            <li>Information</li>
-            <li>Austausch</li>
-            <li>Netzwerk</li>
-          </ul>
+        <div
+          class="m-5 md:mx-0 md:my-5"
+          lang="de"
+          v-html="startseite.acf.intro"
+        ></div>
+
+        <!-- Agenda Columns  -->
+
+        <div
+          class="flex flex-col md:grid md:grid-cols-[30%_30%_40%] gap-3 md:gap-10 items-center md:items-start justify-center w-2/3 md:w-auto md:px-16 border border-black border-solid rounded-tl-sm rounded-tr-md rounded-br-md rounded-bl-md"
+        >
+          <div class="flex flex-col my-5 gap-3 items-center justify-center">
+            <h3 class="my-0">
+              {{ startseite?.acf?.ziele1title }}
+            </h3>
+            <Arrow :width="24" :height="24" class="rotate-45 text-orange" />
+            <ul class="text-center font-sans">
+              <li v-for="item in ziele1" class="list-none">{{ item }}</li>
+            </ul>
+          </div>
+          <div class="flex flex-col my-5 gap-3 items-center justify-center">
+            <h3 class="my-0">
+              {{ startseite?.acf?.ziele2title }}
+            </h3>
+            <Arrow :width="24" :height="24" class="rotate-45 text-orange" />
+            <ul class="text-center font-sans">
+              <li v-for="item in ziele2" class="list-none">{{ item }}</li>
+            </ul>
+          </div>
+          <div class="flex flex-col my-5 gap-3 items-center justify-center">
+            <h3 class="my-0">
+              {{ startseite?.acf?.ziele3title }}
+            </h3>
+            <Arrow :width="24" :height="24" class="rotate-45 text-orange" />
+            <ul class="text-center font-sans">
+              <li v-for="item in ziele3" class="list-none">{{ item }}</li>
+            </ul>
+          </div>
         </div>
-        <div class="flex flex-col gap-3 items-center justify-center">
-          <h3
-            class="text-black text-lg font-inter font-bold leading-6 break-words"
-          >
-            Themen
-          </h3>
-          <Arrow :width="24" :height="24" class="rotate-45 text-orange" />
-          <ul class="text-center font-sans">
-            <li>Ausbildung</li>
-            <li>Beruf</li>
-            <li>Alltag</li>
-            <li>Gesundheit</li>
-          </ul>
-        </div>
-        <div class="flex flex-col gap-3 items-center justify-center">
-          <h3
-            class="text-black text-lg font-inter font-bold leading-6 break-words"
-          >
-            Anliegen
-          </h3>
-          <Arrow :width="24" :height="24" class="rotate-45 text-orange" />
-          <ul class="text-center font-sans">
-            <li>Repräsentation</li>
-            <li>Unabhängigkeit</li>
-            <li>Dis/Ability Rights</li>
-            <li>LGBTQ+ Rights</li>
-          </ul>
-        </div>
+
+        <!-- Agenda Columns End -->
+
+        <!-- Was wir wollen -->
+        <div
+          class="m-5 md:mx-0 md:my-5"
+          lang="de"
+          v-html="startseite.acf?.wasWirWollen"
+        ></div>
+        <!-- Was wir wollen 2 -->
+        <div
+          class="m-5 md:mx-0 md:my-5"
+          lang="de"
+          v-html="startseite.acf?.wasWirWollen2"
+        ></div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-const route = useRoute();
+const store = usePagesStore();
+
+store.fetchPages();
+
+const startseite = computed(() => store.getPageById(19));
+
+watch(startseite, () => {
+  console.log("pages", store.pages);
+});
+
+const splitData = (data) => {
+  return data.split("<br />").map((item) => item.trim());
+};
+const ziele1 = computed(() => splitData(startseite.value.acf?.ziele1));
+const ziele2 = computed(() => splitData(startseite.value.acf?.ziele2));
+const ziele3 = computed(() => splitData(startseite.value.acf?.ziele3));
 </script>
+
+<style scoped></style>

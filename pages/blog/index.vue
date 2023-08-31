@@ -1,46 +1,138 @@
 <template>
   <div class="pb-10">
     <h2 class="text-head">Blog</h2>
+    <div v-if="filteredPosts.length === 0" class="">Loading...</div>
 
-    <BlogPost
-      v-for="blog in blogPosts"
-      :key="blog.title"
-      :blog-title="blog.title"
-      :blog-date="blog.date"
-      :blog-intro="blog.intro"
-      :blog-tags="blog.tags"
-      :blog-category="blog.category"
-    />
+    <div v-else>
+      <!-- Filtered Results Message -->
+      <div v-if="selectedFilter && filterType" class="pb-5">
+        <!-- Singular/Plural logic for the number of posts -->
+        <span v-if="filteredPosts.length === 1">1 Post</span>
+        <span v-else>{{ filteredPosts.length }} Posts</span>
+
+        <span v-if="filterType === 'category'"> in der Kategorie </span>
+        <span v-else-if="filterType === 'tag'"> zum Thema </span>
+
+        <span class="font-bold">"{{ selectedFilter }}"</span>
+        <button
+          @click="clearFilter"
+          class="block frame-s text-sm px-2 py-2 mt-3"
+        >
+          x Filter entfernen
+        </button>
+      </div>
+
+      <BlogPost
+        v-if="filteredPosts.length > 0"
+        v-for="post in filteredPosts"
+        :key="post.id"
+        :blog-uri="post.uri"
+        :blog-title="post.title"
+        :blog-date="post.date"
+        :blog-intro="stripHTMLTags(post.excerpt)"
+        :blog-tags="post.tags.nodes"
+        :blog-category="post.categories.nodes"
+        @filterByTag="handleTagFilter"
+        @filterByCategory="handleCategoryFilter"
+      ></BlogPost>
+    </div>
   </div>
 </template>
 
 <script setup>
-const blogPosts = [
-  {
-    title: "Studium ist scheiße, mach das nicht!",
-    date: "November 15, 2022",
-    intro:
-      "Ein satirischer Beitrag mit ernstgemeinten Tipps von Katharina und Giancarlo für Autist*innen",
-    category: "Work",
-    tags: ["adhs", "ads", "ausbildung", "autismus", "neurodiversität"],
-  },
-  {
-    title: "Studium ist scheiße, mach das nicht!",
-    date: "November 15, 2022",
-    intro:
-      "Ein satirischer Beitrag mit ernstgemeinten Tipps von Katharina und Giancarlo für Autist*innen",
-    category: "Work",
-    tags: ["adhs", "ads", "ausbildung", "autismus", "neurodiversität"],
-  },
-  {
-    title: "Studium ist scheiße, mach das nicht!",
-    date: "November 15, 2022",
-    intro:
-      "Ein satirischer Beitrag mit ernstgemeinten Tipps von Katharina und Giancarlo für Autist*innen",
-    category: "Work",
-    tags: ["adhs", "ads", "ausbildung", "autismus", "neurodiversität"],
-  },
-];
-</script>
+const route = useRoute();
+const config = useRuntimeConfig();
+const {
+  data: posts,
+  refresh,
+  pending,
+} = await useFetch(config.public.wordpressUrl, {
+  method: "get",
+  query: {
+    query: `
+      query GetPosts {
+        posts {
+          nodes {
+            id
+            title
+            excerpt
+            date
+            tags {
+              nodes {
+                name
+              }
+            }
+            categories {
+              nodes {
+                name
+              }
+            }
+            uri
+          }
 
-<style></style>
+
+        }
+      }
+    `,
+  },
+  transform(data) {
+    return data.data.posts.nodes;
+  },
+});
+
+let selectedFilter = ref(null);
+let filterType = ref(null);
+
+onMounted(() => {
+  window.scrollTo(0, 0);
+  if (route.query.tag) {
+    selectedFilter.value = route.query.tag;
+    filterType.value = "tag";
+  } else if (route.query.category) {
+    selectedFilter.value = route.query.category;
+    filterType.value = "category";
+  }
+});
+
+const handleTagFilter = (tagName) => {
+  selectedFilter.value = tagName;
+  filterType.value = "tag";
+};
+
+const handleCategoryFilter = (categoryName) => {
+  selectedFilter.value = categoryName;
+  filterType.value = "category";
+};
+
+const clearFilter = () => {
+  selectedFilter.value = null;
+  filterType.value = null;
+};
+
+const filteredPosts = computed(() => {
+  if (!selectedFilter.value || !filterType.value) {
+    return posts.value; // No filter applied, show all posts
+  }
+  window.scrollTo(0, 0);
+  if (filterType.value === "tag") {
+    // Filter by tag
+    return posts.value.filter((post) =>
+      post.tags.nodes.some((tag) => tag.name === selectedFilter.value)
+    );
+  } else if (filterType.value === "category") {
+    // Filter by category
+    return posts.value.filter((post) =>
+      post.categories.nodes.some(
+        (category) => category.name === selectedFilter.value
+      )
+    );
+  }
+
+  return []; // Default to an empty array if no matching filter type
+});
+
+function stripHTMLTags(html) {
+  const doc = new DOMParser().parseFromString(html, "text/html");
+  return doc.body.textContent || "";
+}
+</script>
