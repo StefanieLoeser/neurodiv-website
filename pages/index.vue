@@ -3,7 +3,8 @@
     <Logo
       :class="'m-auto sm:hidden h-screen items-center justify-center relative bottom-20'"
     />
-    <div v-if="startseite !== undefined">
+    <div v-if="!startseite || !startseite.acf">Loading...</div>
+    <div v-else>
       <h2 class="hidden md:block font-bold text-lg mb-5">
         {{ startseite?.acf?.titel }}
       </h2>
@@ -56,13 +57,13 @@
         <div
           class="m-5 md:mx-0 md:my-5"
           lang="de"
-          v-html="startseite.acf.wasWirWollen"
+          v-html="startseite.acf?.wasWirWollen"
         ></div>
         <!-- Was wir wollen 2 -->
         <div
           class="m-5 md:mx-0 md:my-5"
           lang="de"
-          v-html="startseite.acf.wasWirWollen2"
+          v-html="startseite.acf?.wasWirWollen2"
         ></div>
       </div>
     </div>
@@ -77,9 +78,7 @@ store.fetchPages();
 const startseite = computed(() => store.getPageById(19));
 
 watch(startseite, () => {
-  console.log("startseite", startseite.value);
-  console.log("list", splitData(startseite.value.acf?.ziele1));
-  console.log(ziele1.value);
+  console.log("pages", store.pages);
 });
 
 const splitData = (data) => {

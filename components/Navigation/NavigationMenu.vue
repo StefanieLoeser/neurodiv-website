@@ -42,16 +42,17 @@
               <span class="text-base">Über uns</span>
             </NuxtLink>
           </li>
-          <li :class="{ 'menu-item': true, active: isActive('/contact') }">
-            <NuxtLink to="/contact" class="flex items-center">
-              <template v-if="isActive('/contact')">
+          <li :class="{ 'menu-item': true, active: isActive('/satzung') }">
+            <NuxtLink to="/satzung" class="flex items-center">
+              <template v-if="isActive('/satzung')">
                 <Arrow
                   :width="24"
                   :height="24"
                   class="mr-2 -rotate-45" /></template
-              ><span class="text-base">Kontakt</span></NuxtLink
+              ><span class="text-base">Satzung</span></NuxtLink
             >
           </li>
+
           <li :class="{ 'menu-item': true, active: isActive('/blog') }">
             <NuxtLink to="/blog" class="flex items-center"
               ><template v-if="isActive('/blog')">
@@ -60,6 +61,16 @@
                   :height="24"
                   class="mr-2 -rotate-45" /></template
               ><span class="text-base">Blog</span></NuxtLink
+            >
+          </li>
+          <li :class="{ 'menu-item': true, active: isActive('/contact') }">
+            <NuxtLink to="/contact" class="flex items-center">
+              <template v-if="isActive('/contact')">
+                <Arrow
+                  :width="24"
+                  :height="24"
+                  class="mr-2 -rotate-45" /></template
+              ><span class="text-base">Kontakt</span></NuxtLink
             >
           </li>
         </ul>
@@ -82,25 +93,6 @@ import ImprintInfo from "./ImprintInfo.vue";
 import MobileNavBar from "./MobileNavBar.vue";
 
 const isDesktop = ref(false);
-
-const menuRoutes = [
-  {
-    label: "Startseite",
-    path: "/",
-  },
-  {
-    label: "Über uns",
-    path: "/about",
-  },
-  {
-    label: "Kontakt",
-    path: "/contact",
-  },
-  // {
-  //   label: "Blog",
-  //   path: "/blog",
-  // },
-];
 
 const isActive = (path) => {
   const route = useRoute();

@@ -1,10 +1,11 @@
 <template>
-  <div class="pb-10">
+  <div v-if="!aboutPage || !aboutPage.acf">Loading...</div>
+  <div v-else class="pb-10">
     <h2 class="text-head">{{ aboutPage?.acf?.title }}</h2>
 
     <div class="flex flex-col gap-10">
       <div
-        class="m-5 md:mx-0 md:my-5"
+        class="my-5 md:mx-0 md:my-5"
         lang="de"
         v-html="aboutPage?.acf?.intro"
       ></div>

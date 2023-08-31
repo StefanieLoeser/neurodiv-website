@@ -73,6 +73,34 @@
                 <span class="text-base">Über uns</span>
               </NuxtLink>
             </li>
+            <li :class="{ 'menu-item': true, active: isActive('/satzung') }">
+              <NuxtLink
+                to="/satzung"
+                class="flex items-center"
+                @click="$emit('closeOverlay')"
+              >
+                <template v-if="isActive('/satzung')">
+                  <Arrow
+                    :width="24"
+                    :height="24"
+                    class="mr-2 -rotate-45" /></template
+                ><span class="text-base">Satzung</span></NuxtLink
+              >
+            </li>
+
+            <li :class="{ 'menu-item': true, active: isActive('/blog') }">
+              <NuxtLink
+                to="/blog"
+                class="flex items-center"
+                @click="$emit('closeOverlay')"
+                ><template v-if="isActive('/blog')">
+                  <Arrow
+                    :width="32"
+                    :height="32"
+                    class="mr-2 -rotate-45" /></template
+                ><span class="text-base">Blog</span></NuxtLink
+              >
+            </li>
             <li :class="{ 'menu-item': true, active: isActive('/contact') }">
               <NuxtLink
                 to="/contact"
@@ -85,19 +113,6 @@
                     :height="32"
                     class="mr-2 -rotate-45" /></template
                 ><span class="text-base">Kontakt</span></NuxtLink
-              >
-            </li>
-            <li :class="{ 'menu-item': true, active: isActive('/blog') }">
-              <NuxtLink
-                to="/blog"
-                class="flex items-center"
-                @click="$emit('closeOverlay')"
-                ><template v-if="isActive('/blog')">
-                  <Arrow
-                    :width="32"
-                    :height="32"
-                    class="mr-2 -rotate-45" /></template
-                ><span class="text-base">Blog</span></NuxtLink
               >
             </li>
           </ul>

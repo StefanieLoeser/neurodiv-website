@@ -1,36 +1,41 @@
 <template>
   <div class="pb-10">
     <h2 class="text-head">Blog</h2>
-    <div v-if="pending" class="">Loading...</div>
+    <div v-if="filteredPosts.length === 0" class="">Loading...</div>
 
-    <!-- Filtered Results Message -->
-    <div v-if="selectedFilter && filterType" class="pb-5">
-      <!-- Singular/Plural logic for the number of posts -->
-      <span v-if="filteredPosts.length === 1">1 Post</span>
-      <span v-else>{{ filteredPosts.length }} Posts</span>
+    <div v-else>
+      <!-- Filtered Results Message -->
+      <div v-if="selectedFilter && filterType" class="pb-5">
+        <!-- Singular/Plural logic for the number of posts -->
+        <span v-if="filteredPosts.length === 1">1 Post</span>
+        <span v-else>{{ filteredPosts.length }} Posts</span>
 
-      <span v-if="filterType === 'category'"> in der Kategorie </span>
-      <span v-else-if="filterType === 'tag'"> zum Thema </span>
+        <span v-if="filterType === 'category'"> in der Kategorie </span>
+        <span v-else-if="filterType === 'tag'"> zum Thema </span>
 
-      <span class="font-bold">"{{ selectedFilter }}"</span>
-      <button @click="clearFilter" class="block frame-s text-sm px-2 py-2 mt-3">
-        x Filter entfernen
-      </button>
+        <span class="font-bold">"{{ selectedFilter }}"</span>
+        <button
+          @click="clearFilter"
+          class="block frame-s text-sm px-2 py-2 mt-3"
+        >
+          x Filter entfernen
+        </button>
+      </div>
+
+      <BlogPost
+        v-if="filteredPosts.length > 0"
+        v-for="post in filteredPosts"
+        :key="post.id"
+        :blog-uri="post.uri"
+        :blog-title="post.title"
+        :blog-date="post.date"
+        :blog-intro="stripHTMLTags(post.excerpt)"
+        :blog-tags="post.tags.nodes"
+        :blog-category="post.categories.nodes"
+        @filterByTag="handleTagFilter"
+        @filterByCategory="handleCategoryFilter"
+      ></BlogPost>
     </div>
-
-    <BlogPost
-      v-if="filteredPosts.length > 0"
-      v-for="post in filteredPosts"
-      :key="post.id"
-      :blog-uri="post.uri"
-      :blog-title="post.title"
-      :blog-date="post.date"
-      :blog-intro="stripHTMLTags(post.excerpt)"
-      :blog-tags="post.tags.nodes"
-      :blog-category="post.categories.nodes"
-      @filterByTag="handleTagFilter"
-      @filterByCategory="handleCategoryFilter"
-    ></BlogPost>
   </div>
 </template>
 
